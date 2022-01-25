@@ -24,10 +24,29 @@ PXEventMultiBundleTest >> setUp [
 
 { #category : #tests }
 PXEventMultiBundleTest >> testUpdateEntityForSingleBundle [
-	
+
+	| category |
 	entity := ZnMultiPartFormDataEntity new.
 	multiBundle updateEntity: entity forSingleBundle: pxBundle.
-	self assert: (entity parts detect:[:e| e fieldName = 'experienceId']) contents equals: pxBundle experienceId.
-	self assert: (entity parts detect:[:e| e fieldName = 'participantUUID']) contents equals: pxBundle participantUUID.
-	self assert: (entity parts detect:[:e| e fieldName = 'taskOrSurveyId']) contents equals: pxBundle taskOrSurveyId
+
+	category := STON fromString: (entity parts detect: [ :e | 
+			             e fieldName = PXEventMultiBundle categoryFieldName ])
+			            fieldValue.
+	self
+		assert: (category at: PXEventMultiBundle categoryFieldName)
+		equals: pxBundle category.
+	self
+		assert: (category at: PXEventMultiBundle experienceIdFieldName)
+		equals: pxBundle experienceId.
+	self
+		assert: (category at: PXEventMultiBundle participantUUIDFieldName)
+		equals: pxBundle participantUUID.
+	self
+		assert: (category at: PXEventMultiBundle taskOrSurveyIdFieldName)
+		equals: pxBundle taskOrSurveyId.
+
+	self
+		assert: (entity parts detect: [ :e | 
+				 e fieldName = PXEventMultiBundle dataFieldName ]) contents
+		equals: pxBundle entity contents
 ]
