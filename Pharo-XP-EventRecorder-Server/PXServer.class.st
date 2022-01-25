@@ -16,8 +16,8 @@ PXServer class >> serverURL [
 
 { #category : #'start-stop' }
 PXServer class >> start [
+
 	<example>
-	EREventRecorderSettings url: self serverURL.
 	(ZnServer startDefaultOn: 8008)
 		route: '';
 		delegate: PXServerDelegate new
