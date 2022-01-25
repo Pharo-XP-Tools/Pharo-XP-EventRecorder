@@ -9,14 +9,19 @@ Class {
 	#category : #'Pharo-XP-EventRecorder-Server'
 }
 
+{ #category : #accessing }
+PXServerDelegate >> dispatcher [
+	"for tests"
+	^ dispatcher
+]
+
 { #category : #initialization }
 PXServerDelegate >> initialize [
-	putHandler := EREventRecorderPutHandler new.
-	self flag: 'determine where the data should be stored in the server'.
+	putHandler := PXEventRecorderPutHandler new.
 	putHandler storage: (PXServerFileStorage new
-		directory: FileLocator home / 'gt' / 'events'; 
+		directory: FileLocator home / 'px-experiments' / 'data'; 
 		yourself).
-	self flag: ''.	
+	
 	dispatcher := ZnDispatcherDelegate new.
 	self initializeDispatcher
 ]

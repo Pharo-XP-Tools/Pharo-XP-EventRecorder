@@ -8,10 +8,10 @@ Class {
 }
 
 { #category : #accessing }
-PXServerFileStorage >> atCategory: aString put: aByteArray [
+PXServerFileStorage >> atCategory: aSTONString put: aByteArray [
 
 	| subDirectory fileName file |
-	subDirectory := (self directory / aString)
+	subDirectory := (self directory / aSTONString)
 		                ensureCreateDirectory;
 		                yourself.
 	fileName := UUID new printString , '-'
@@ -19,5 +19,5 @@ PXServerFileStorage >> atCategory: aString put: aByteArray [
 	file := subDirectory / fileName.
 	file binaryWriteStreamDo: [ :aStream | 
 		aStream nextPutAll: aByteArray ].
-	^ aString , '/' , fileName
+	^ aSTONString , '/' , fileName
 ]
