@@ -10,7 +10,7 @@ BaselineOfPharoXPEventRecorder >> baseline: spec [
 	<baseline>
 	spec
 		baseline: 'EventRecorder'
-		with: [ spec repository: 'github://Pharo-XP-Tools/EventRecorder:main/' ].
+		with: [ spec repository: 'github://Pharo-XP-Tools/EventRecorder:master/' ].
 
 	spec for: #common do: [ 
 		spec package: 'Pharo-XP-EventRecorder-Client'.
