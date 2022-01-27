@@ -54,6 +54,11 @@ PXEventCollector >> participantUUID: anObject [
 	participantUUID := anObject
 ]
 
+{ #category : #'tools registry' }
+PXEventCollector >> register [
+	PXEventRecorder uniqueInstance addCollector: self
+]
+
 { #category : #accessing }
 PXEventCollector >> taskOrSurveyId [
 
