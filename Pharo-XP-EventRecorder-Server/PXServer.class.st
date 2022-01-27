@@ -11,13 +11,13 @@ Class {
 
 { #category : #'start-stop' }
 PXServer class >> serverURL [
-	^"'https://rmod-xp.lille.inria.fr/'"'http://localhost:8008'
+	^'http://localhost:8008'
 ]
 
 { #category : #'start-stop' }
 PXServer class >> start [
+
 	<example>
-	EREventRecorderSettings url: self serverURL.
 	(ZnServer startDefaultOn: 8008)
 		route: '';
 		delegate: PXServerDelegate new
