@@ -6,8 +6,23 @@ I also add some convenience for development and some automatic local configurati
 Class {
 	#name : #PXServer,
 	#superclass : #EREventRecorderServer,
+	#classInstVars : [
+		'devMode'
+	],
 	#category : #'Pharo-XP-EventRecorder-Server'
 }
+
+{ #category : #accessing }
+PXServer class >> devMode [
+
+	^ devMode ifNil:[devMode := false]
+]
+
+{ #category : #accessing }
+PXServer class >> devMode: anObject [
+
+	devMode := anObject
+]
 
 { #category : #'start-stop' }
 PXServer class >> serverURL [
