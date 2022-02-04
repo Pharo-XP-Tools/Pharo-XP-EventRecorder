@@ -20,7 +20,7 @@ PXEventRecorderPutHandler >> hasCategoryAndDataParts: aCollection [
 
 	| category |
 	(super hasCategoryAndDataParts: aCollection) ifFalse: [ ^ false ].
-
+	PXServer devMode ifTrue:[aCollection crTrace].
 	category := [ 
 	            STON fromString: (self
 			             detectFieldNamed: PXEventMultiBundle categoryFieldName

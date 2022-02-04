@@ -15,6 +15,12 @@ PXServerDelegate >> dispatcher [
 	^ dispatcher
 ]
 
+{ #category : #public }
+PXServerDelegate >> handleRequest: request [
+	PXServer devMode ifTrue:[request contents crTrace].
+	^ super handleRequest: request
+]
+
 { #category : #initialization }
 PXServerDelegate >> initialize [
 	putHandler := PXEventRecorderPutHandler new.
