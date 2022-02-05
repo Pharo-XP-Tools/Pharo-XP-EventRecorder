@@ -12,3 +12,8 @@ PXEventRecorder >> activateDelivery [
 	delivery standardDuration: 1 minute.
 	^ delivery activate
 ]
+
+{ #category : #packing }
+PXEventRecorder >> eventConsolidatorClass [
+	^PXEventConsolidate 
+]
