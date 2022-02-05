@@ -9,7 +9,7 @@ Class {
 
 { #category : #delivery }
 PXEventRecorder >> activateDelivery [
-	delivery standardDuration: 1 minute.
+	delivery standardDuration: 1 second.
 	^ delivery activate
 ]
 
