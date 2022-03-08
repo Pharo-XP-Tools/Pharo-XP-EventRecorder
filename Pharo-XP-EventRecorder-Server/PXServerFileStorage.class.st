@@ -26,11 +26,15 @@ PXServerFileStorage >> atCategory: aSTONString put: aByteArray [
 { #category : #accessing }
 PXServerFileStorage >> buildDirectory: category in: parent [
 
-	| dir |
-	dir := parent / (category at: PXEventMultiBundle categoryFieldName)
-	       / (category at: PXEventMultiBundle experienceIdFieldName)
-	       / (category at: PXEventMultiBundle participantUUIDFieldName)
-	       / (category at: PXEventMultiBundle taskOrSurveyIdFieldName).
+	| buildDirPathBlock dir |	
+	buildDirPathBlock := [ :key | (category at: key) ifNotNil: [ :path| dir := dir / path] ].
+	
+	dir := parent.
+	buildDirPathBlock value: PXEventMultiBundle categoryFieldName.
+	buildDirPathBlock value: PXEventMultiBundle experienceIdFieldName.
+	buildDirPathBlock value: PXEventMultiBundle participantUUIDFieldName.
+	buildDirPathBlock value: PXEventMultiBundle taskOrSurveyIdFieldName.		
+
 	dir ensureCreateDirectory.
 	^ dir
 ]
