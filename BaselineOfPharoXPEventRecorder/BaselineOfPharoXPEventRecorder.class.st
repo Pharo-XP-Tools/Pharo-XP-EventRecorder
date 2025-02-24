@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfPharoXPEventRecorder,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfPharoXPEventRecorder
+	#name : 'BaselineOfPharoXPEventRecorder',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfPharoXPEventRecorder',
+	#package : 'BaselineOfPharoXPEventRecorder'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfPharoXPEventRecorder >> baseline: spec [
 
 	<baseline>
 	spec
 		baseline: 'EventRecorder'
-		with: [ spec repository: 'github://Pharo-XP-Tools/EventRecorder:master/' ].
+		with: [ spec repository: 'github://Pharo-XP-Tools/EventRecorder:P12/' ].
 
 	spec for: #common do: [ 
 		spec package: 'Pharo-XP-EventRecorder-Client'.
